@@ -5,6 +5,7 @@
     <title>Einstein Analytics + Lightning Out</title>
   </head>
   <body>
+  	<button onclick="showDashboard(this);">Login</button>
   	<div id="dashboard"/>
     <script src="/javascripts/force.oauth.js"></script>
 	<script src="https://adx-dev-ed.lightning.force.com/lightning/lightning.out.js"></script>
@@ -34,17 +35,21 @@
 
       	var oauth = force.OAuth.createInstance(appId, loginURL, oauthCallbackURL);
 
-      	oauth.login().then(function(oauthResult) {
-    	    $Lightning.use('c:loApp', function(evt) {
-    	    	var config = {
-    	    		dashboardId: dashboardId,
-    	    		width: '1200px',
-    	    		height: '600px'
-    	    	}
-    	    	$Lightning.createComponent('wave:waveDashboard', config, 'dashboard', function(cmp, msg, err) {
-    	    	});
-    	    }, ltngURL, oauthResult.accessToken);
-    	});
+      	function showDashboard(el) {
+			oauth.login().then(function(oauthResult) {
+	    	    $Lightning.use('c:loApp', function(evt) {
+	    	    	var config = {
+	    	    		dashboardId: dashboardId,
+	    	    		width: '1200px',
+	    	    		height: '600px'
+	    	    	}
+	    	    	$Lightning.createComponent('wave:waveDashboard', config, 'dashboard', function(cmp, msg, err) {
+	    	    		// Hide the login button
+	    	    		el.style.display = 'none';
+	    	    	});
+	    	    }, ltngURL, oauthResult.accessToken);
+	    	});
+	    }
 	</script>
   </body>
 </html>
