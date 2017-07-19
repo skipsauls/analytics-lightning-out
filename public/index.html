@@ -5,7 +5,7 @@
     <title>Einstein Analytics + Lightning Out</title>
   </head>
   <body>
-  	<button onclick="showDashboard(this);">Login</button>
+  	<button onclick="showDashboard(this);">Show Dashboard</button>
   	<div id="dashboard"/>
     <script src="/javascripts/force.oauth.js"></script>
 	<script src="https://adx-dev-ed.lightning.force.com/lightning/lightning.out.js"></script>
@@ -30,6 +30,9 @@
 			appId = '3MVG9SemV5D80oBcff3jWxxK32ej7YRj5N2VFaNk72.eE38z.dZuXhbnlB8p1pe88y9C6K6dRa3JN3icBcN.j';
 		}
 
+		// Change this if you selected a different name for the Lightning Out Dependency App
+		var loAppName = 'c:loApp';
+
 		// This is the ID of the Analytics dashboard that you wish to display
       	var dashboardId = '0FKB0000000DEFlOAO';
 
@@ -37,7 +40,7 @@
 
       	function showDashboard(el) {
 			oauth.login().then(function(oauthResult) {
-	    	    $Lightning.use('c:loApp', function(evt) {
+	    	    $Lightning.use(loAppName, function(evt) {
 	    	    	var config = {
 	    	    		dashboardId: dashboardId,
 	    	    		width: '1200px',
