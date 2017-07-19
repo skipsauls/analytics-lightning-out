@@ -5,8 +5,8 @@ var http = require('http');
 var request = require('request');
 var app = express();
 
-var port = '3000';
-var https_port = '3001';
+var port = process.env.PORT || 3000;
+var https_port = process.env.HTTPS_PORT || parseInt(port) + 1;
 
 app.use(express.static(__dirname + '/public'));
 
