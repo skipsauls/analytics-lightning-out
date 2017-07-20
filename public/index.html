@@ -18,16 +18,12 @@
 
 		var oauthCallbackURL = window.location.origin + '/oauthcallback.html';
 
-		// The following code supports localhost and remote apps
-		// Change if you are using a different pattern for local development
-		var appId = null;
+		// The Consumer Key for the Connected App
+		var appId = '3MVG9SemV5D80oBcff3jWxxK32ej7YRj5N2VFaNk72.eE38z.dZuXhbnlB8p1pe88y9C6K6dRa3JN3icBcN.j';
 
 		if (window.location.origin.indexOf('localhost') >= 0) {
 			// This will be the Consumer Key for the Connected App on localhost
 			appId = '3MVG9SemV5D80oBcff3jWxxK32RKEGuV4rwCe0au2N57DF5JLbaPRJq_vbfAR43i60NyBEUSd_SnRtKMHnPcR';
-		} else {
-			// This will be the Consumer Key for the Connected App on Heroku (or elsewhere)
-			appId = '3MVG9SemV5D80oBcff3jWxxK32ej7YRj5N2VFaNk72.eE38z.dZuXhbnlB8p1pe88y9C6K6dRa3JN3icBcN.j';
 		}
 
 		// Change this if you selected a different name for the Lightning Out Dependency App
